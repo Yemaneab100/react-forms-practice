@@ -1,10 +1,14 @@
-import { useState } from "react";
-import "./App.css";
+import { useState } from 'react'
+import './App.css'
 
 export default function App() {
-  
   //TODO: Add your state fields here
+  const [formState, setFormState] = useState('')
 
+  const handleCHange = (event) => {
+
+    const targetFullName =
+  }
   return (
     <>
       <form className="form">
@@ -70,5 +74,5 @@ export default function App() {
         <input type="submit" value="Submit!" />
       </form>
     </>
-  );
+  )
 }
