@@ -46,7 +46,7 @@ export default function App() {
     if (targetName === 'contact') {
       setFormState({ ...formState, contact: targetValue })
     }
-    if (targetName === 'consent' && targetType === 'checkBox') {
+    if (targetName === 'consent' && targetType === 'checkbox') {
       setFormState({ ...formState, agreement: targetChecked })
     }
   }
