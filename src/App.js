@@ -5,7 +5,11 @@ const initialFormState = {
   fullName: '',
   address: '',
   phoneNumber: '',
-  email: ''
+  email: '',
+  complaint: '',
+  contact: 'Email',
+  agreement: false
+
 }
 export default function App() {
   //TODO: Add your state fields here
@@ -34,6 +38,14 @@ export default function App() {
     }
     if (targetName === 'email') {
       setFormState({ ...formState, email: targetValue })
+    }
+
+    if(targetName === 'complaint'){
+      setFormState({ ...formState, complaint: targetValue })
+    }
+
+    if(targetName === 'contact'){
+      setFormState({ ...formState, contact: targetValue })
     }
   }
 
@@ -89,28 +101,38 @@ export default function App() {
               name="complaint"
               rows="10"
               placeholder="You can complain here"
+              value={formState.complaint}
+              onChange={handleCHange}
             ></textarea>
           </label>
 
           <div className="form__radio-group">
             <p>How do you want to be contacted? </p>
             <label>
-              <input type="radio" name="contact" value="phone" />
+              <input type="radio" name="contact" value="phone"
+               checked={formState.contact === "phone"}
+               onChange={handleCHange}/>
               Phone
             </label>
 
             <label>
-              <input type="radio" name="contact" value="email" />
+              <input type="radio" name="contact" value="email" 
+              checked={formState.contact === "email"}
+              onChange={handleCHange}/>
               Email
             </label>
 
             <label>
-              <input type="radio" name="contact" value="post" />
+              <input type="radio" name="contact" value="post"
+              checked={formState.contact === "post"}
+              onChange={handleCHange} />
               Slow Mail
             </label>
 
             <label>
-              <input type="radio" name="contact" value="none" />
+              <input type="radio" name="contact" value="none"
+              checked={formState.contact === "none"}
+              onChange={handleCHange} />
               No contact!
             </label>
           </div>
