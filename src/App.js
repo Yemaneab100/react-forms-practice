@@ -12,20 +12,29 @@ export default function App() {
   const [formState, setFormState] = useState(initialFormState)
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("submited", formState)
-    setFormState(initialFormState);
+    event.preventDefault()
+    console.log('submited', formState)
+    setFormState(initialFormState)
   }
 
   const handleCHange = (event) => {
-    const targetValue = event.target.value;
-    const targetName = event.target.name;
-    const targetType = event.target.type;
-    const targetChecked = event.target.value;
-    if (targetName === "name") {
-      setFormState({ ...formState, fullName: targetValue });
-    }
+    const targetValue = event.target.value
+    const targetName = event.target.name
+    const targetType = event.target.type
+    const targetChecked = event.target.value
 
+    if (targetName === 'name') {
+      setFormState({ ...formState, fullName: targetValue })
+    }
+    if (targetName === 'address') {
+      setFormState({ ...formState, address: targetValue })
+    }
+    if (targetName === 'phone') {
+      setFormState({ ...formState, phoneNumber: targetValue })
+    }
+    if (targetName === 'email') {
+      setFormState({ ...formState, email: targetValue })
+    }
   }
 
   return (
@@ -35,22 +44,41 @@ export default function App() {
         <div className="form__section-left">
           <label>
             Full name
-            <input type="text" name="name" required 
-            value={formState.fullName}
-            onChange={handleCHange}/>
+            <input
+              type="text"
+              name="name"
+              required
+              value={formState.fullName}
+              onChange={handleCHange}
+            />
           </label>
           <label>
             Address
-            <input type="text" name="address" />
+            <input
+              type="text"
+              name="address"
+              value={formState.address}
+              onChange={handleCHange}
+            />
           </label>
           <label>
             Phone Number
-            <input type="tel" name="phone" />
+            <input
+              type="tel"
+              name="phone"
+              value={formState.phoneNumber}
+              onChange={handleCHange}
+            />
           </label>
 
           <label>
             Email
-            <input type="email" name="email" />
+            <input
+              type="email"
+              name="email"
+              value={formState.email}
+              onChange={handleCHange}
+            />
           </label>
         </div>
 
