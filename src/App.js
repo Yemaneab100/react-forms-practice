@@ -9,7 +9,6 @@ const initialFormState = {
   complaint: '',
   contact: 'Email',
   agreement: false
-
 }
 export default function App() {
   //TODO: Add your state fields here
@@ -21,7 +20,7 @@ export default function App() {
     setFormState(initialFormState)
   }
 
-  const handleCHange = (event) => {
+  const handleChange = (event) => {
     const targetValue = event.target.value
     const targetName = event.target.name
     const targetType = event.target.type
@@ -40,12 +39,15 @@ export default function App() {
       setFormState({ ...formState, email: targetValue })
     }
 
-    if(targetName === 'complaint'){
+    if (targetName === 'complaint') {
       setFormState({ ...formState, complaint: targetValue })
     }
 
-    if(targetName === 'contact'){
+    if (targetName === 'contact') {
       setFormState({ ...formState, contact: targetValue })
+    }
+    if (targetName === 'consent' && targetType === 'checkBox') {
+      setFormState({ ...formState, agreement: targetChecked })
     }
   }
 
@@ -61,7 +63,7 @@ export default function App() {
               name="name"
               required
               value={formState.fullName}
-              onChange={handleCHange}
+              onChange={handleChange}
             />
           </label>
           <label>
@@ -70,7 +72,7 @@ export default function App() {
               type="text"
               name="address"
               value={formState.address}
-              onChange={handleCHange}
+              onChange={handleChange}
             />
           </label>
           <label>
@@ -79,7 +81,7 @@ export default function App() {
               type="tel"
               name="phone"
               value={formState.phoneNumber}
-              onChange={handleCHange}
+              onChange={handleChange}
             />
           </label>
 
@@ -89,7 +91,7 @@ export default function App() {
               type="email"
               name="email"
               value={formState.email}
-              onChange={handleCHange}
+              onChange={handleChange}
             />
           </label>
         </div>
@@ -102,44 +104,67 @@ export default function App() {
               rows="10"
               placeholder="You can complain here"
               value={formState.complaint}
-              onChange={handleCHange}
+              onChange={handleChange}
             ></textarea>
           </label>
 
           <div className="form__radio-group">
             <p>How do you want to be contacted? </p>
             <label>
-              <input type="radio" name="contact" value="phone"
-               checked={formState.contact === "phone"}
-               onChange={handleCHange}/>
+              <input
+                type="radio"
+                name="contact"
+                value="phone"
+                checked={formState.contact === 'phone'}
+                onChange={handleChange}
+              />
               Phone
             </label>
 
             <label>
-              <input type="radio" name="contact" value="email" 
-              checked={formState.contact === "email"}
-              onChange={handleCHange}/>
+              <input
+                type="radio"
+                name="contact"
+                value="email"
+                checked={formState.contact === 'email'}
+                onChange={handleChange}
+              />
               Email
             </label>
 
             <label>
-              <input type="radio" name="contact" value="post"
-              checked={formState.contact === "post"}
-              onChange={handleCHange} />
+              <input
+                type="radio"
+                name="contact"
+                value="post"
+                checked={formState.contact === 'post'}
+                onChange={handleChange}
+              />
               Slow Mail
             </label>
 
             <label>
-              <input type="radio" name="contact" value="none"
-              checked={formState.contact === "none"}
-              onChange={handleCHange} />
+              <input
+                type="radio"
+                name="contact"
+                value="none"
+                checked={formState.contact === 'none'}
+                onChange={handleChange}
+              />
               No contact!
             </label>
           </div>
 
           <label>
             I agree you take my data, and do whatever
-            <input type="checkbox" name="consent" id="consent" />
+            <input
+              type="checkbox"
+              name="consent"
+              id="consent"
+              value="none"
+              checked={formState.agreement}
+              onChange={handleChange}
+            />
           </label>
         </div>
         <input type="submit" value="Submit!" />
